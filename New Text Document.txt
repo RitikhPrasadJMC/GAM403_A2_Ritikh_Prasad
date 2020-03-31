@@ -1,0 +1,1 @@
+I created the majority of the first player character pirate ship, called the 'Crystal Voyager' once finished I will begin to create the ocean and player controls.
