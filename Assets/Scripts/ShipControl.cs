@@ -4,24 +4,47 @@ using UnityEngine;
 
 public class ShipControl : MonoBehaviour
 {
-    private GameObject player;
-    public float speed;
-    private Rigidbody rb;
-    // Start is called before the first frame update
-    void Start()
+    public List<float> sailSpeeds = new List<float>();
+    private int sailIndex = 0;
+    private float speed;
+
+    private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        speed = sailSpeeds[sailIndex];
     }
  
-
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis("Horizontal") * speed; //Fowards and Backwards
+        float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime; //Turning
+        transform.position += transform.forward * vertical;
+        transform.Rotate(0, horizontal, 0);
 
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SetSailSpeeds(1);
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SetSailSpeeds(-1);
+        }
+    }
 
-        rb.AddForce(movement * speed);
+    private void SetSailSpeeds(int _value)
+    {
+        sailIndex += _value;
+
+        if(sailIndex < 0)
+        {
+            sailIndex = sailSpeeds.Count - 1;
+        }
+
+        if(sailIndex > sailSpeeds.Count - 1)
+        {
+            sailIndex = 0;
+        }
+
+        speed = sailSpeeds[sailIndex];
+        Debug.Log("Current Speed is: " + speed.ToString());
     }
 }
