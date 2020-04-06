@@ -24,10 +24,6 @@ public class ShipControl : MonoBehaviour
         {
             SetSailSpeeds(1);
         }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SetSailSpeeds(-1);
-        }
     }
 
     private void SetSailSpeeds(int _value)
