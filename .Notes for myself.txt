@@ -7,3 +7,12 @@ if (Input.GetKeyDown(KeyCode.R))
         {
             SetSailSpeeds(-1);
         }
+
+cannons
+particle effects for water trail
+ask ash about fog to hide the horizon
+add the "R" function back to the ship controls (E, R)
+ocean follows the player
+
+
+sequel Child of the Sea ;)

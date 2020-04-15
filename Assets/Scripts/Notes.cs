@@ -1,0 +1,1 @@
+﻿//Ocean//Removed cloth, skinned mesh renderer and set Y to 2(because 1000 was invalid)//This is how I fixed 999+ errors

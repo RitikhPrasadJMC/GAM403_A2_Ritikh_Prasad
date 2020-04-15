@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System;
+using System.Text;
 
 public class ShipControl : MonoBehaviour
 {
@@ -15,14 +18,19 @@ public class ShipControl : MonoBehaviour
  
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal") * speed; //Fowards and Backwards
-        float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime; //Turning
+        float horizontal = Input.GetAxis("Horizontal") * speed; //Turning
+        float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime; //Fowards and Backwards
         transform.position += transform.forward * vertical;
         transform.Rotate(0, horizontal, 0);
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.F)) //Speed up
         {
             SetSailSpeeds(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.G)) //Slow down
+        {
+            SetSailSpeeds(-1);
         }
     }
 
