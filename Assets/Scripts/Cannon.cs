@@ -24,14 +24,14 @@ public class Cannon : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Space) && ammo <= 0)
         {
-            print("You're out of ammo, reload champ!");
+            print("We're out of ammo, reload champ!");
         }
         if (Input.GetKeyDown(KeyCode.R) && ammo <= 0)
         {
             ammo = 10;
-            print("Ammo reloaded, shoot to kill champ! ;)");
+            print("Ammo reloaded, shoot to kill Cap'n! ;)");
         }
-        else if (cannonBall = null)
+        else if (cannonBall == null)
         {
             print("Boss the cannons are jammed!");
         }

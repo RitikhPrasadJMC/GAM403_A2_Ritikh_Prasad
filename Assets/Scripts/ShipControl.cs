@@ -9,7 +9,7 @@ public class ShipControl : MonoBehaviour
 {
     public List<float> sailSpeeds = new List<float>();
     private int sailIndex = 0;
-    private float speed;
+    public float speed, rotSpeed;
 
     private void Start()
     {
@@ -18,7 +18,7 @@ public class ShipControl : MonoBehaviour
  
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal") * speed; //Turning
+        float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime; //Turning
         float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime; //Fowards and Backwards
         transform.position += transform.forward * vertical;
         transform.Rotate(0, horizontal, 0);
