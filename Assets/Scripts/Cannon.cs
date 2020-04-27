@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Threading;
 using UnityEngine;
 
 public class Cannon : MonoBehaviour
@@ -8,10 +10,17 @@ public class Cannon : MonoBehaviour
     public Transform barrel;
     public int ammo;
     public float ballSpeed;
+    public GameObject player;
+    public float rotSpeed;
 
+    void Start()
+    {
+        player = GameObject.Find("Crystal Voyager");
+    }
     void Update()
     {
         GetInput();
+        Aim();
     }
 
     void GetInput()
@@ -42,5 +51,11 @@ public class Cannon : MonoBehaviour
         CannonBall cbScript = cb.GetComponent<CannonBall>();
         cbScript.speed = ballSpeed;
         cbScript.GoFast();
+    }
+    void Aim()
+    {
+        Quaternion lookRot = Quaternion.LookRotation(player.transform.position, transform.up);
+        Quaternion stepRot = Quaternion.RotateTowards(transform.rotation, lookRot, rotSpeed * Time.deltaTime);
+        transform.localRotation = stepRot;
     }
 }
