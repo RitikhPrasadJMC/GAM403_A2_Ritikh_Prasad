@@ -54,7 +54,7 @@ public class Cannon : MonoBehaviour
     }
     void Aim()
     {
-        Quaternion lookRot = Quaternion.LookRotation(player.transform.position, transform.up);
+        Quaternion lookRot = Quaternion.LookRotation(player.transform.position, Vector3.up);
         Quaternion stepRot = Quaternion.RotateTowards(transform.rotation, lookRot, rotSpeed * Time.deltaTime);
         transform.localRotation = stepRot;
     }
