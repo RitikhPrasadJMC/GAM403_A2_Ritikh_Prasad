@@ -20,7 +20,6 @@ public class Cannon : MonoBehaviour
     void Update()
     {
         GetInput();
-        Aim();
     }
 
     void GetInput()
@@ -51,11 +50,5 @@ public class Cannon : MonoBehaviour
         CannonBall cbScript = cb.GetComponent<CannonBall>();
         cbScript.speed = ballSpeed;
         cbScript.GoFast();
-    }
-    void Aim()
-    {
-        Quaternion lookRot = Quaternion.LookRotation(player.transform.position, Vector3.up);
-        Quaternion stepRot = Quaternion.RotateTowards(transform.rotation, lookRot, rotSpeed * Time.deltaTime);
-        transform.localRotation = stepRot;
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemySpawn : MonoBehaviour
 {
     public SpawnControl sc;
     void Start()
